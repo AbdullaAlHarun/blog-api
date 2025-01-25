@@ -5,10 +5,16 @@ const User = {
     const sql = 'INSERT INTO users (name, email, password) VALUES (?, ?, ?)';
     db.query(sql, [userData.name, userData.email, userData.password], callback);
   },
-  getAll: (callback) => {
-    const sql = 'SELECT id, name, email FROM users'; // Avoid selecting passwords
-    db.query(sql, callback);
+
+  getByEmail: (email, callback) => {
+    const sql = 'SELECT * FROM users WHERE email = ?';
+    db.query(sql, [email], callback);
   },
+
+  getAll: (callback) => {
+    const sql = 'SELECT id, name, email FROM users';
+    db.query(sql, callback);
+  }
 };
 
 module.exports = User;

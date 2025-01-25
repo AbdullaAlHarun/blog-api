@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Create or Edit Post</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-gray-100 text-gray-800">
+
+  <!-- Navbar -->
+  <nav class="bg-blue-500 p-4 flex justify-between items-center shadow-md">
+    <div class="text-white text-lg font-semibold">Create or Edit Post</div>
+    <a href="home.html" class="bg-gray-300 px-4 py-2 rounded text-gray-800 font-medium">Back to Home</a>
+  </nav>
+
+  <!-- Post Form -->
+  <div class="container mx-auto mt-10 p-8 bg-white rounded-lg shadow-md max-w-lg">
+    <h2 class="text-2xl font-bold mb-4 text-center">New Post</h2>
+
+    <form id="postForm">
+      <input type="text" id="title" placeholder="Title" class="w-full mb-4 p-2 border rounded" required>
+      <textarea id="content" placeholder="Content" class="w-full mb-4 p-2 border rounded" required></textarea>
+      <button type="submit" class="bg-green-500 text-white px-6 py-3 rounded-lg text-lg font-semibold shadow-md w-full hover:bg-green-600 transition-all">
+        Submit Post
+      </button>
+    </form>
+  </div>
+
+  <!-- Footer -->
+  <footer class="bg-blue-500 text-white text-center py-4 mt-10 shadow-md">
+    &copy; 2024 Blog App. All rights reserved.
+  </footer>
+
+  <script src="./src/ui/editpost.js"></script>
+</body>
+</html>

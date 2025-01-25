@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Home Page</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-gray-100 text-gray-800">
+
+  <!-- Navbar -->
+  <nav class="bg-blue-500 p-4 flex justify-between items-center shadow-md">
+    <div id="username" class="text-white text-lg font-semibold">Welcome, User</div>
+    <button onclick="logout()" class="bg-red-500 px-4 py-2 rounded text-white font-medium">Logout</button>
+  </nav>
+
+  <!-- Main Content -->
+  <div class="container mx-auto mt-8 px-4">
+    <h1 class="text-4xl font-bold text-center mb-6">All Posts</h1>
+
+    <!-- Post List Section -->
+    <div id="postList" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+      <!-- Posts will be dynamically added here -->
+    </div>
+
+    <!-- Create Post Button -->
+    <div class="flex justify-center mt-8">
+      <a href="editpost.html" class="bg-green-500 text-white px-6 py-3 rounded-lg text-lg font-semibold shadow-md hover:bg-green-600 transition-all">
+        Create Post
+      </a>
+    </div>
+  </div>
+
+  <!-- Footer -->
+  <footer class="bg-blue-500 text-white text-center py-4 mt-10 shadow-md">
+    &copy; 2024 Blog App. All rights reserved.
+  </footer>
+
+  <script src="./src/ui/home.js"></script>
+</body>
+</html>
