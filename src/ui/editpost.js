@@ -1,3 +1,5 @@
+const API_BASE_URL = "https://blog-api-final.vercel.app/api";
+
 document.addEventListener('DOMContentLoaded', async () => {
   const token = localStorage.getItem('token');
   const urlParams = new URLSearchParams(window.location.search);
@@ -13,7 +15,7 @@ document.addEventListener('DOMContentLoaded', async () => {
     document.getElementById('pageTitle').innerText = 'Edit Post';
 
     try {
-      const response = await fetch(`http://localhost:5000/api/posts/${postId}`, {
+      const response = await fetch(`${API_BASE_URL}/posts/${postId}`, {
         headers: {
           'Authorization': `Bearer ${token}`
         }
@@ -33,7 +35,7 @@ document.addEventListener('DOMContentLoaded', async () => {
     const content = document.getElementById('content').value;
     const postId = document.getElementById('postId').value;
     const method = postId ? 'PUT' : 'POST';
-    const url = postId ? `http://localhost:5000/api/posts/${postId}` : 'http://localhost:5000/api/posts';
+    const url = postId ? `${API_BASE_URL}/posts/${postId}` : `${API_BASE_URL}/posts`;
 
     try {
       const response = await fetch(url, {
