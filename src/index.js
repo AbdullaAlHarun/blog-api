@@ -10,27 +10,26 @@ const app = express();
 
 // Configure CORS to allow requests from the frontend URL on Vercel
 app.use(cors({
-  origin: 'https://blog-api-final.vercel.app',  // Allow frontend domain
+  origin: process.env.NODE_ENV === 'production' 
+    ? 'https://blog-api-final.vercel.app'  
+    : 'http://localhost:5500', 
   methods: 'GET,POST,PUT,DELETE',
   credentials: true
 }));
 
 app.use(express.json());
 
+// Serve frontend static files from the root directory
+app.use(express.static(path.join(__dirname, '../')));
 
-app.use(express.static(path.join(__dirname, '..')));
-
-// API routes
 app.use('/api', userRoutes);
 app.use('/api', postRoutes);
 
-
-app.get('/*', (req, res) => {
-  if (req.path.startsWith('/api')) return; // Prevent interfering with API routes
-  res.sendFile(path.join(__dirname, '..', 'index.html'));
+// Catch-all route to serve the frontend for non-API requests
+app.get('*', (req, res) => {
+  res.sendFile(path.join(__dirname, '../index.html'));
 });
 
-// Define the port
 const PORT = process.env.PORT || 5000;
 app.listen(PORT, () => {
   console.log(`Server running on http://localhost:${PORT}`);
