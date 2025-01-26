@@ -1,6 +1,5 @@
 const API_BASE_URL = "https://blog-api-final.vercel.app/api";
 
-
 // Handle login form submission
 document.addEventListener('DOMContentLoaded', () => {
   const loginForm = document.getElementById('loginForm');
@@ -9,8 +8,13 @@ document.addEventListener('DOMContentLoaded', () => {
     loginForm.addEventListener('submit', async (e) => {
       e.preventDefault();
 
-      const email = document.getElementById('email').value;
-      const password = document.getElementById('password').value;
+      const email = document.getElementById('email').value.trim();
+      const password = document.getElementById('password').value.trim();
+
+      if (!email || !password) {
+        document.getElementById('message').innerText = 'Please enter both email and password.';
+        return;
+      }
 
       try {
         const response = await fetch(`${API_BASE_URL}/login`, {
@@ -29,7 +33,7 @@ document.addEventListener('DOMContentLoaded', () => {
           document.getElementById('message').innerText = result.message;
         }
       } catch (error) {
-        document.getElementById('message').innerText = 'Login failed. Please try again.';
+        document.getElementById('message').innerText = 'Login failed. Please try again later.';
         console.error('Login error:', error);
       }
     });
