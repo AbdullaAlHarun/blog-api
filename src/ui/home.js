@@ -1,5 +1,6 @@
 const API_BASE_URL = "https://blog-api-final.vercel.app/api";
 
+
 async function fetchPosts() {
   try {
     const response = await fetch(`${API_BASE_URL}/posts`, {

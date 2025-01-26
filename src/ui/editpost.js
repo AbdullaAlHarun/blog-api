@@ -1,5 +1,6 @@
 const API_BASE_URL = "https://blog-api-final.vercel.app/api";
 
+
 document.addEventListener('DOMContentLoaded', async () => {
   const token = localStorage.getItem('token');
   const urlParams = new URLSearchParams(window.location.search);

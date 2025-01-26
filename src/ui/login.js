@@ -1,5 +1,6 @@
 const API_BASE_URL = "https://blog-api-final.vercel.app/api";
 
+
 // Handle login form submission
 document.addEventListener('DOMContentLoaded', () => {
   const loginForm = document.getElementById('loginForm');
