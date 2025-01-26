@@ -8,7 +8,7 @@ require('dotenv').config();
 
 const app = express();
 
-// Configure CORS to allow requests from the frontend URL on Vercel
+// Allow Vercel frontend to access backend
 app.use(cors({
   origin: ['https://blog-api-final.vercel.app', 'http://localhost:5500'],
   methods: 'GET,POST,PUT,DELETE',
@@ -17,27 +17,23 @@ app.use(cors({
 
 app.use(express.json());
 
-// Serve frontend static files correctly
+// Serve static frontend files
 app.use(express.static(path.join(__dirname, '../')));
 
-// API routes
-app.use('/api', userRoutes);
-app.use('/api', postRoutes);
-
-// Serve HTML files for specific routes
-app.get('/login', (req, res) => {
+// Handle direct access to pages via URL
+app.get('/login.html', (req, res) => {
   res.sendFile(path.join(__dirname, '../login.html'));
 });
 
-app.get('/register', (req, res) => {
+app.get('/register.html', (req, res) => {
   res.sendFile(path.join(__dirname, '../register.html'));
 });
 
-app.get('/home', (req, res) => {
+app.get('/home.html', (req, res) => {
   res.sendFile(path.join(__dirname, '../home.html'));
 });
 
-// Catch-all route to serve index.html for other frontend routes
+// Serve index.html for root and unknown paths
 app.get('*', (req, res) => {
   res.sendFile(path.join(__dirname, '../index.html'));
 });
