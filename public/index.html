@@ -12,16 +12,6 @@
     <p class="mb-4">Please login or register to continue</p>
     <a href="login.html" class="block bg-blue-500 text-white px-4 py-2 rounded-md mb-2">Login</a>
     <a href="register.html" class="block bg-green-500 text-white px-4 py-2 rounded-md">Register</a>
-
   </div>
-
-  <script>
-    document.addEventListener('DOMContentLoaded', () => {
-      // Redirect to home if already logged in
-      if (localStorage.getItem('token')) {
-        window.location.href = 'home.html';
-      }
-    });
-  </script>
 </body>
 </html>

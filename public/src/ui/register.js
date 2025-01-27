@@ -1,4 +1,7 @@
-const API_BASE_URL = "https://blog-api-final.vercel.app/api";
+const API_BASE_URL = window.location.hostname.includes("localhost")
+  ? "http://localhost:5000/api"
+  : "https://blog-api-final.vercel.app/api";
+
 
 document.getElementById('registerForm').addEventListener('submit', async (e) => {
   e.preventDefault();

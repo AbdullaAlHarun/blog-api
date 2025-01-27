@@ -1,6 +1,7 @@
-const API_BASE_URL = "https://blog-api-final.vercel.app/api";
+const API_BASE_URL = window.location.hostname.includes("localhost")
+  ? "http://localhost:5000/api"
+  : "https://blog-api-final.vercel.app/api";
 
-// Handle login form submission
 document.addEventListener('DOMContentLoaded', () => {
   const loginForm = document.getElementById('loginForm');
   
@@ -8,13 +9,8 @@ document.addEventListener('DOMContentLoaded', () => {
     loginForm.addEventListener('submit', async (e) => {
       e.preventDefault();
 
-      const email = document.getElementById('email').value.trim();
-      const password = document.getElementById('password').value.trim();
-
-      if (!email || !password) {
-        document.getElementById('message').innerText = 'Please enter both email and password.';
-        return;
-      }
+      const email = document.getElementById('email').value;
+      const password = document.getElementById('password').value;
 
       try {
         const response = await fetch(`${API_BASE_URL}/login`, {
@@ -33,14 +29,9 @@ document.addEventListener('DOMContentLoaded', () => {
           document.getElementById('message').innerText = result.message;
         }
       } catch (error) {
-        document.getElementById('message').innerText = 'Login failed. Please try again later.';
+        document.getElementById('message').innerText = 'Login failed. Please try again.';
         console.error('Login error:', error);
       }
     });
-  }
-
-  // Redirect to home if already logged in
-  if (localStorage.getItem('token')) {
-    window.location.href = 'home.html';
   }
 });
