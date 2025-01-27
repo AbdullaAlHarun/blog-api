@@ -2,6 +2,9 @@
   "version": 2,
   "routes": [
     { "src": "/api/.*", "dest": "src/index.js" },
+    { "src": "/login", "dest": "/login.html" },
+    { "src": "/register", "dest": "/register.html" },
+    { "src": "/home", "dest": "/home.html" },
     { "src": "/.*", "dest": "/index.html" }
   ]
 }
